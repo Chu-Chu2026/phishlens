@@ -1,0 +1,47 @@
+{
+  "total_urls": 518,
+  "phishing_count": 300,
+  "legitimate_count": 218,
+  "feature_count": 34,
+  "feature_distributions": [
+    {
+      "name": "url_length",
+      "phishing": 0.207,
+      "legitimate": 0.108
+    },
+    {
+      "name": "num_hyphens",
+      "phishing": 0.117,
+      "legitimate": 0.003
+    },
+    {
+      "name": "has_https",
+      "phishing": 0.687,
+      "legitimate": 1.0
+    },
+    {
+      "name": "subdomain_count",
+      "phishing": 0.36,
+      "legitimate": 0.489
+    },
+    {
+      "name": "suspicious_keyword_count",
+      "phishing": 0.048,
+      "legitimate": 0.006
+    },
+    {
+      "name": "is_suspicious_tld",
+      "phishing": 0.077,
+      "legitimate": 0.0
+    },
+    {
+      "name": "hostname_entropy",
+      "phishing": 0.746,
+      "legitimate": 0.636
+    }
+  ],
+  "sources": {
+    "OpenPhish": 300,
+    "BenignList": 218
+  }
+}

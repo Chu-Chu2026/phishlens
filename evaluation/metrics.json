@@ -1,0 +1,76 @@
+{
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "auc": 1.0,
+  "test_size": 104,
+  "random_state": 42,
+  "confusion_matrix": [
+    [
+      44,
+      0
+    ],
+    [
+      0,
+      60
+    ]
+  ],
+  "classification_report": {
+    "Legitimate": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 44.0
+    },
+    "Phishing": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 60.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 104.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 104.0
+    }
+  },
+  "latency": {
+    "mean_ms": 54.95448000000465,
+    "p50_ms": 50.7784499999957,
+    "p95_ms": 73.4236350000117,
+    "n_samples": 100
+  },
+  "model_comparison": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.9711538461538461,
+      "f1": 0.9743589743589743
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 1.0,
+      "f1": 1.0
+    },
+    {
+      "model": "Svm",
+      "accuracy": 1.0,
+      "f1": 1.0
+    },
+    {
+      "model": "Ensemble",
+      "accuracy": 1.0,
+      "f1": 1.0
+    }
+  ],
+  "auc_plot": 1.0,
+  "average_precision": 1.0
+}
