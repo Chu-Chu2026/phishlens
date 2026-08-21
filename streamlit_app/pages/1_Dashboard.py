@@ -31,6 +31,14 @@ from streamlit_app.components.ui import (
     section_title,
 )
 from streamlit_app.services.model_loader import load_dataset_stats, load_metadata, load_metrics
+from streamlit_app.utils.nav import (
+    CONFIDENCE_EVIDENCE,
+    DATASET_ANALYTICS,
+    EXPLAINABILITY,
+    MODEL_EVALUATION,
+    RESEARCH,
+    URL_ANALYSIS,
+)
 
 ensure_analysis_state()
 init_page("Dashboard · PhishLens", "📊", active_nav="dashboard")
@@ -73,7 +81,7 @@ else:
             "Analyse a URL from the landing page or **URL Detection** to see the verdict "
             "and a plain-English explanation of why it was called phishing or legitimate."
         )
-        st.page_link("pages/2_URL_Analysis.py", label="Analyse a URL →")
+        st.page_link(URL_ANALYSIS, label="Analyse a URL →")
 
 metrics_row([
     {"label": "Accuracy", "value": f"{metrics.get('accuracy', 0):.1%}" if metrics else "—", "icon_key": "accuracy"},
@@ -117,12 +125,12 @@ with right:
                 fmt = f"{val:,}" if isinstance(val, int) and key != "feature_count" else str(val)
                 st.markdown(f"- **{label}:** {fmt}")
         section_title("Quick navigation")
-        st.page_link("pages/2_URL_Analysis.py", label="Analyze a URL →")
-        st.page_link("pages/3_Explainability.py", label="View SHAP explanations →")
-        st.page_link("pages/4_Model_Evaluation.py", label="Model evaluation →")
-        st.page_link("pages/5_Dataset_Analytics.py", label="Dataset analytics →")
-        st.page_link("pages/6_Research.py", label="Research documentation →")
-        st.page_link("pages/7_Confidence_Evidence.py", label="Confidence evidence →")
+        st.page_link(URL_ANALYSIS, label="Analyze a URL →")
+        st.page_link(EXPLAINABILITY, label="View SHAP explanations →")
+        st.page_link(MODEL_EVALUATION, label="Model evaluation →")
+        st.page_link(DATASET_ANALYTICS, label="Dataset analytics →")
+        st.page_link(RESEARCH, label="Research documentation →")
+        st.page_link(CONFIDENCE_EVIDENCE, label="Confidence evidence →")
 
 history = st.session_state.get("analysis_history", [])
 if history:

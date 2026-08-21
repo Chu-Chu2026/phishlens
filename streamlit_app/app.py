@@ -19,6 +19,7 @@ import streamlit as st
 from streamlit_app.components.analysis import queue_analysis
 from streamlit_app.components.ui import LOGO_SVG, init_landing_page
 from streamlit_app.services.model_loader import load_metrics
+from streamlit_app.utils.nav import DASHBOARD
 
 init_landing_page("PhishLens — Explainable Phishing Detection", "🛡️")
 
@@ -45,7 +46,7 @@ st.markdown(
               <a href="#metrics">Metrics</a>
             </nav>
           </div>
-          <a class="landing-dashboard-btn" href="Dashboard">Open dashboard →</a>
+          <a class="landing-dashboard-btn" href="/Dashboard">Open dashboard →</a>
         </div>
       </div>
     </header>
@@ -84,14 +85,14 @@ with st.form("landing_analyze", clear_on_submit=False):
     )
     submitted = st.form_submit_button("🔍 Analyze URL", type="primary", width="stretch")
 
-st.page_link("pages/1_Dashboard.py", label="or skip straight to the dashboard →")
+st.page_link(DASHBOARD, label="or skip straight to the dashboard →")
 
 st.markdown("</div>", unsafe_allow_html=True)
 
 if submitted:
     if url and url.strip():
         queue_analysis(url.strip())
-        st.switch_page("pages/1_Dashboard.py")
+        st.switch_page(DASHBOARD)
     else:
         st.warning("Enter a URL to analyze.")
 

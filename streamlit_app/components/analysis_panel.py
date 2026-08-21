@@ -21,6 +21,7 @@ from streamlit_app.components.ui import (
 from streamlit_app.components.analysis import get_explanation_field
 from streamlit_app.services.explainer import ExplanationResult
 from streamlit_app.services.predictor import PredictionResult
+from streamlit_app.utils.nav import CONFIDENCE_EVIDENCE, EXPLAINABILITY
 
 
 def render_why_decision(pred: PredictionResult, expl: ExplanationResult | None) -> None:
@@ -104,7 +105,7 @@ def render_why_decision(pred: PredictionResult, expl: ExplanationResult | None) 
                 max_items=8,
             )
 
-    st.page_link("pages/3_Explainability.py", label="See charts and deeper SHAP detail →")
+    st.page_link(EXPLAINABILITY, label="See charts and deeper SHAP detail →")
     section_spacer()
 
 
@@ -188,9 +189,9 @@ def render_analysis_details(
             else:
                 st.caption("Run an analysis to see ranked drivers.")
 
-    st.page_link("pages/3_Explainability.py", label="View full charts & deeper explanation →")
+    st.page_link(EXPLAINABILITY, label="View full charts & deeper explanation →")
     st.page_link(
-        "pages/7_Confidence_Evidence.py",
+        CONFIDENCE_EVIDENCE,
         label="Record whether this explanation increased your confidence →",
     )
 

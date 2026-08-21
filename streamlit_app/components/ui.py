@@ -9,6 +9,8 @@ from typing import Any, Iterator
 
 import streamlit as st
 
+from streamlit_app.utils.nav import EXPLAINABILITY, URL_ANALYSIS
+
 ROOT = Path(__file__).resolve().parents[2]
 
 # Shield-check logo SVG (matches Vite Lucide icon in gradient box)
@@ -192,10 +194,10 @@ def hero_section(
         c1, c2 = st.columns(2, gap="medium")
         with c1:
             if st.button("🔍 Analyze URL", type="primary", width="stretch", key="hero_analyze"):
-                st.switch_page("pages/2_URL_Analysis.py")
+                st.switch_page(URL_ANALYSIS)
         with c2:
             if st.button("✨ View explanations", width="stretch", key="hero_explain"):
-                st.switch_page("pages/3_Explainability.py")
+                st.switch_page(EXPLAINABILITY)
 
 
 def section_title(title: str, subtitle: str = "") -> None:
