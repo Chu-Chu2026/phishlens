@@ -49,7 +49,7 @@ def main() -> None:
     generate_dataset_stats()
 
     logger.info("=== Pipeline complete ===")
-    logger.info("Run: streamlit run streamlit_app/app.py")
+    logger.info("Run: streamlit run streamlit_app.py")
 
 
 if __name__ == "__main__":

@@ -72,7 +72,30 @@ def _venv_has_deps(venv_py: Path) -> bool:
     return probe.returncode == 0
 
 
+def _on_streamlit_cloud() -> bool:
+    """True when this process is running inside Streamlit Community Cloud."""
+    return Path("/mount/src").is_dir() or Path("/home/adminuser").is_dir()
+
+
 def main() -> None:
+    # Streamlit Cloud must use streamlit_app.py — this launcher creates a local .venv
+    # and will fail there (no pip in Cloud's app .venv).
+    if _on_streamlit_cloud():
+        import streamlit as st
+
+        st.set_page_config(page_title="PhishLens — fix deploy settings", page_icon="🛡️")
+        st.error(
+            "Wrong **Main file path** for Streamlit Community Cloud.\n\n"
+            "In **App settings → General → Main file path**, set:\n\n"
+            "`streamlit_app.py`"
+        )
+        st.info(
+            "`scripts/setup_and_run.py` is a local installer/launcher only. "
+            "It must not be the Cloud entrypoint."
+        )
+        st.stop()
+        return
+
     parser = argparse.ArgumentParser(description="Install, train, and launch PhishLens.")
     parser.add_argument(
         "--skip-install",
@@ -191,7 +214,7 @@ def main() -> None:
     print("\n→ Launching Streamlit dashboard…")
     print("  Open the URL shown below (usually http://localhost:8501)")
     print("  Press Ctrl+C to stop the app.\n")
-    app_path = ROOT / "streamlit_app" / "app.py"
+    app_path = ROOT / "streamlit_app.py"
     try:
         result = subprocess.run(
             [str(venv_py), "-m", "streamlit", "run", str(app_path)],

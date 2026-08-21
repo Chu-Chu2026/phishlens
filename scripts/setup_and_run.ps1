@@ -99,5 +99,5 @@ Write-Host "Open the URL shown below in your browser (usually http://localhost:8
 Write-Host "Press Ctrl+C to stop the app." -ForegroundColor DarkGray
 Write-Host ""
 
-& $venvPython -m streamlit run (Join-Path $Root "streamlit_app\app.py")
+& $venvPython -m streamlit run (Join-Path $Root "streamlit_app.py")
 exit $LASTEXITCODE

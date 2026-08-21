@@ -1,7 +1,7 @@
 """
 PhishLens — Explainable Ensemble ML Dashboard for Phishing URL Detection.
 
-Run: streamlit run streamlit_app/app.py
+Run: streamlit run streamlit_app.py
 """
 
 from __future__ import annotations

@@ -62,13 +62,24 @@ Google Colab workflow: `notebooks/phishlens_colab.ipynb`
 #### 3. Launch the dashboard
 
 ```bash
-streamlit run streamlit_app/app.py
+streamlit run streamlit_app.py
 ```
+
+### Streamlit Community Cloud
+
+1. Push this repo to GitHub.
+2. At [share.streamlit.io](https://share.streamlit.io), deploy the repo.
+3. Set **Main file path** to `streamlit_app.py` (not `scripts/setup_and_run.py`).
+4. Use **Python 3.12** if the UI asks for a version (`runtime.txt` requests 3.12).
+
+Cloud installs from `requirements.txt` automatically. Pre-trained models in `trained_models/` ship with the repo, so no training step is needed on Cloud.
 
 ## Project Structure
 
 ```
 phishlens/
+├── streamlit_app.py        # Streamlit Cloud / local entrypoint
+├── pages/                  # Multipage wrappers (Cloud discovers these next to entry)
 ├── streamlit_app/          # Streamlit dashboard (dissertation artefact)
 │   ├── app.py
 │   ├── pages/              # Dashboard, URL Analysis, Explainability, etc.
@@ -84,7 +95,7 @@ phishlens/
 ├── trained_models/         # Serialized ensemble + metadata
 ├── evaluation/             # Metrics, plots, SHAP artifacts
 ├── tests/
-├── src/                    # React UI (design reference only)
+├── runtime.txt             # Python 3.12 for Streamlit Cloud
 └── scripts/run_pipeline.py
 ```
 
