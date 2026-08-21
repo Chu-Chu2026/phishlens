@@ -1,0 +1,138 @@
+[
+  {
+    "feature": "path_length",
+    "mean_abs_shap": 0.16055352072024706
+  },
+  {
+    "feature": "num_slashes",
+    "mean_abs_shap": 0.12797130273792393
+  },
+  {
+    "feature": "url_length",
+    "mean_abs_shap": 0.03846174779029936
+  },
+  {
+    "feature": "num_digits",
+    "mean_abs_shap": 0.032690760796490775
+  },
+  {
+    "feature": "url_entropy",
+    "mean_abs_shap": 0.027175158261559938
+  },
+  {
+    "feature": "digit_ratio_hostname",
+    "mean_abs_shap": 0.020273618658207235
+  },
+  {
+    "feature": "hostname_entropy",
+    "mean_abs_shap": 0.018072070906956932
+  },
+  {
+    "feature": "hostname_length",
+    "mean_abs_shap": 0.013375205486010372
+  },
+  {
+    "feature": "has_https",
+    "mean_abs_shap": 0.012838384331275397
+  },
+  {
+    "feature": "subdomain_count",
+    "mean_abs_shap": 0.011912182210491704
+  },
+  {
+    "feature": "num_hyphens",
+    "mean_abs_shap": 0.011225390796055518
+  },
+  {
+    "feature": "path_depth",
+    "mean_abs_shap": 0.011043401552203156
+  },
+  {
+    "feature": "letter_ratio_hostname",
+    "mean_abs_shap": 0.009803573334030258
+  },
+  {
+    "feature": "num_dots",
+    "mean_abs_shap": 0.009599620469623642
+  },
+  {
+    "feature": "has_http",
+    "mean_abs_shap": 0.00922931148508299
+  },
+  {
+    "feature": "path_entropy",
+    "mean_abs_shap": 0.006476240339334711
+  },
+  {
+    "feature": "tld_length",
+    "mean_abs_shap": 0.002201080717298988
+  },
+  {
+    "feature": "long_url",
+    "mean_abs_shap": 0.0009515072982043402
+  },
+  {
+    "feature": "many_hyphens",
+    "mean_abs_shap": 0.0005024400246429841
+  },
+  {
+    "feature": "query_length",
+    "mean_abs_shap": 0.0004813468954961064
+  },
+  {
+    "feature": "has_suspicious_keyword",
+    "mean_abs_shap": 0.00047782563064052903
+  },
+  {
+    "feature": "query_param_count",
+    "mean_abs_shap": 0.0004411080686421269
+  },
+  {
+    "feature": "suspicious_keyword_count",
+    "mean_abs_shap": 0.0004042259931534046
+  },
+  {
+    "feature": "is_suspicious_tld",
+    "mean_abs_shap": 0.000186128336289975
+  },
+  {
+    "feature": "brand_impersonation_score",
+    "mean_abs_shap": 0.00014466650397434086
+  },
+  {
+    "feature": "num_underscores",
+    "mean_abs_shap": 0.00011386353583234754
+  },
+  {
+    "feature": "has_port",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "has_ip_host",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "has_at_symbol",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "num_special_chars",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "has_double_slash_redirect",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "very_long_url",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "many_subdomains",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "short_hostname",
+    "mean_abs_shap": 0.0
+  }
+]

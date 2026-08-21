@@ -1,0 +1,48 @@
+{
+  "explainer_type": "TreeExplainer",
+  "base_model": "RandomForestClassifier",
+  "background_size": 200,
+  "test_sample_size": 104,
+  "top_features": [
+    {
+      "feature": "path_length",
+      "mean_abs_shap": 0.16055352072024706
+    },
+    {
+      "feature": "num_slashes",
+      "mean_abs_shap": 0.12797130273792393
+    },
+    {
+      "feature": "url_length",
+      "mean_abs_shap": 0.03846174779029936
+    },
+    {
+      "feature": "num_digits",
+      "mean_abs_shap": 0.032690760796490775
+    },
+    {
+      "feature": "url_entropy",
+      "mean_abs_shap": 0.027175158261559938
+    },
+    {
+      "feature": "digit_ratio_hostname",
+      "mean_abs_shap": 0.020273618658207235
+    },
+    {
+      "feature": "hostname_entropy",
+      "mean_abs_shap": 0.018072070906956932
+    },
+    {
+      "feature": "hostname_length",
+      "mean_abs_shap": 0.013375205486010372
+    },
+    {
+      "feature": "has_https",
+      "mean_abs_shap": 0.012838384331275397
+    },
+    {
+      "feature": "subdomain_count",
+      "mean_abs_shap": 0.011912182210491704
+    }
+  ]
+}
