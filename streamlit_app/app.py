@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 import streamlit as st
 
 from streamlit_app.components.analysis import queue_analysis
+from streamlit_app.components.loading import dismiss_loading_screen
 from streamlit_app.components.ui import LOGO_SVG, init_landing_page
 from streamlit_app.services.model_loader import load_metrics
 from streamlit_app.utils.nav import DASHBOARD
@@ -197,3 +198,5 @@ st.markdown(
 )
 
 st.caption("All metrics loaded from evaluation/metrics.json — no fabricated data.")
+
+dismiss_loading_screen()

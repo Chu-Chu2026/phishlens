@@ -74,6 +74,8 @@ streamlit run streamlit_app.py
 
 Cloud installs from `requirements.txt` automatically. Pre-trained models in `trained_models/` ship with the repo, so no training step is needed on Cloud.
 
+**Loading screen note:** Streamlit paints a native skeleton *before* any Python/CSS runs. Locally, `scripts/patch_streamlit_splash.py` (run by `setup_and_run`) injects PhishLens branding into Streamlit’s `index.html` so the first paint is branded. Community Cloud often blocks that write — there you may still see a brief Streamlit skeleton, then the PhishLens splash. To hide the skeleton only: append `?embed=true&embed_options=hide_loading_screen` to the Cloud URL (also strips some chrome).
+
 ## Project Structure
 
 ```

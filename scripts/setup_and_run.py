@@ -210,6 +210,25 @@ def main() -> None:
             step="Run tests",
         )
 
+    # 3b) Patch Streamlit static index.html for branded first paint
+    # (Python splash cannot cover Streamlit's native loading skeleton)
+    print("\n→ Patching Streamlit native loading screen (index.html)…")
+    patch_result = subprocess.run(
+        [str(venv_py), str(ROOT / "scripts" / "patch_streamlit_splash.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if patch_result.returncode == 0:
+        print(f"  {patch_result.stdout.strip().replace(chr(10), ' | ')}")
+    else:
+        print(
+            "  Warning: could not patch Streamlit index.html "
+            f"({patch_result.stderr.strip() or 'unknown error'}). "
+            "You may briefly see Streamlit's default skeleton.",
+            file=sys.stderr,
+        )
+
     # 4) Launch Streamlit
     print("\n→ Launching Streamlit dashboard…")
     print("  Open the URL shown below (usually http://localhost:8501)")

@@ -39,13 +39,15 @@ METRIC_ICONS = {
 }
 
 def inject_custom_css() -> None:
-    """Inject PhishLens theme CSS and Inter font."""
-    from streamlit_app.components.loading import inject_loading_screen
-
+    """Inject theme CSS. Splash is handled separately by boot_splash / inject_loading_screen."""
     css_path = Path(__file__).resolve().parents[1] / "assets" / "custom.css"
     if css_path.exists():
+        raw = css_path.read_text(encoding="utf-8")
+        css_body = "\n".join(
+            line for line in raw.splitlines() if not line.strip().startswith("@import")
+        )
         st.markdown(
-            f"<style>{css_path.read_text(encoding='utf-8')}</style>",
+            f"<style>{css_body}</style>",
             unsafe_allow_html=True,
         )
     st.markdown(
@@ -56,7 +58,6 @@ def inject_custom_css() -> None:
         """,
         unsafe_allow_html=True,
     )
-    inject_loading_screen()
 
 
 @contextmanager
@@ -112,13 +113,19 @@ def inject_app_sidebar_css() -> None:
 def init_landing_page(title: str = "PhishLens", icon: str = "🛡️") -> None:
     """Landing page setup — full-width, no sidebar."""
     from streamlit_app.components.analysis import ensure_analysis_state
+    from streamlit_app.components.loading import safe_set_page_config
 
     ensure_analysis_state()
-    # Keep sidebar expanded in Streamlit config (only applied once per session).
-    # Hiding is done via CSS so dashboard pages still get a sidebar after navigation.
-    st.set_page_config(page_title=title, page_icon=icon, layout="wide", initial_sidebar_state="expanded")
+    # Entrypoint may have already called set_page_config + splash.
+    safe_set_page_config(
+        page_title=title,
+        page_icon=icon,
+        layout="wide",
+        initial_sidebar_state="collapsed",
+    )
     inject_custom_css()
     inject_landing_css()
+    # Splash stays up until app.py finishes rendering (see dismiss at bottom).
 
 
 def init_page(
@@ -129,6 +136,7 @@ def init_page(
 ) -> None:
     """Standard app page setup: config, CSS, sidebar, top header."""
     from streamlit_app.components.analysis import ensure_analysis_state
+    from streamlit_app.components.loading import dismiss_loading_screen, safe_set_page_config
     from streamlit_app.components.sidebar import (
         detect_active_nav,
         render_app_header,
@@ -138,7 +146,7 @@ def init_page(
     ensure_analysis_state()
     nav = active_nav if active_nav is not None else detect_active_nav()
 
-    st.set_page_config(
+    safe_set_page_config(
         page_title=title,
         page_icon=icon,
         layout=layout,
@@ -147,6 +155,7 @@ def init_page(
     inject_custom_css()
     render_app_sidebar(active_nav=nav)
     render_app_header(_page_title_from_config_sidebar(title), active_nav=nav)
+    dismiss_loading_screen()
 
 
 def _page_title_from_config_sidebar(title: str) -> str:
