@@ -4,22 +4,29 @@
 
 A Master's dissertation research prototype combining an ensemble of Logistic Regression, Random Forest, and SVM with SHAP explainability in a local Streamlit dashboard.
 
-
 ## Overview
-![Loading Screen](/data/images/loading_screen.png)
-![Dashboard](/data/images/img1.png)
-![URL Analysis](/data/images/img2.png)
-![Explainability](/data/images/img3.png)
-![SHAP](/data/images/img4.png)
 
+Loading Screen
+Dashboard
+URL Analysis
+Explainability
+SHAP
 
 ## Research Question
 
 > Can an Explainable Ensemble Machine Learning model improve phishing URL detection while providing transparent explanations through SHAP?
 
+## To view the deployed version of the project, please visit: [https://phishlens.streamlit.app/](https://phishlens.streamlit.app/)
+
+### Note: Incase you see This app has gone to sleep due to inactivity. Please click on the blue button to wake it up. ![WAKE UP](/data/images/img5.png) 
+
+
+
+
 ## Quick Start
 
-### One-shot (recommended)
+
+### One-shot Command to Setup virtual environment and run the project (Recommended)
 
 Creates `.venv`, installs dependencies, runs the ML pipeline, then launches Streamlit:
 
@@ -41,7 +48,9 @@ The script skips pip install and training when `.venv` packages and `trained_mod
 
 (`scripts/setup_and_run.ps1` / `.bat` are optional Windows wrappers around the same flow.)
 
-### Manual steps
+### Manual Project Setup and Execution
+
+
 
 #### 1. Install dependencies
 
@@ -50,6 +59,8 @@ python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 ```
+
+
 
 #### 2. Run the ML pipeline (download → train → evaluate → SHAP)
 
@@ -64,6 +75,8 @@ Google Colab workflow: `notebooks/phishlens_colab.ipynb`
 ```bash
 streamlit run streamlit_app/app.py
 ```
+
+
 
 ## Project Structure
 
@@ -88,6 +101,8 @@ phishlens/
 └── scripts/run_pipeline.py
 ```
 
+
+
 ## Ensemble Model
 
 Soft-voting `VotingClassifier` over:
@@ -95,6 +110,8 @@ Soft-voting `VotingClassifier` over:
 - Logistic Regression
 - Random Forest
 - Support Vector Machine (SVM)
+
+
 
 ## Explainability
 
@@ -105,11 +122,15 @@ SHAP `TreeExplainer` powers the charts, and every prediction also gets a **plain
 - Practical advice on what to do next
 - Global summary / importance plots plus per-URL waterfall and force-style charts
 
+
+
 ## Testing
 
 ```bash
 pytest tests/ -v
 ```
+
+
 
 ## React UI (Design Reference)
 
@@ -119,6 +140,8 @@ The `src/` directory contains the original Lovable-generated React/TanStack Star
 npm install
 npm run dev
 ```
+
+
 
 ## Academic Integrity
 
@@ -131,3 +154,4 @@ For dissertation writing support (paste-ready sections, results tables, limitati
 - `REPORT_WRITING_ARTIFACT.txt`
 - `REPORT_WRITING_ARTIFACT.md`
 - `REPORT_WRITING_ARTIFACT.pdf`
+
