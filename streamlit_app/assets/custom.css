@@ -1,6 +1,6 @@
-/* PhishLens — Streamlit theme ported from src/styles.css (Vite UI) */
-
-@import url("https://rsms.me/inter/inter.css");
+/* PhishLens — Streamlit theme ported from src/styles.css (Vite UI)
+   Do not @import fonts here — it blocks first paint and causes an ugly FOUC.
+   Splash styles live inline in components/loading.py for first paint. */
 
 :root {
   --radius: 1rem;
@@ -594,78 +594,10 @@ p, label, .stMarkdown, .stCaption {
 
 /* ─── App shell sidebar + header (Vite _app.tsx) ─── */
 
-/* Loading splash — CSS-only, no JavaScript required */
+/* Loading splash styles live inline in components/loading.py (first paint).
+   Keep a minimal fallback here in case the splash markup is still in the DOM. */
 #phish-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(900px 500px at 10% -10%, oklch(0.72 0.16 252 / 0.2), transparent 60%),
-              radial-gradient(800px 400px at 90% 0%, oklch(0.7 0.17 195 / 0.14), transparent 60%),
-              #0b1020;
-  animation: phish-loader-fade 2.1s ease forwards;
-  pointer-events: none;
-}
-
-@keyframes phish-loader-fade {
-  0%, 55% { opacity: 1; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-#phish-loader .phish-loader-card {
-  text-align: center;
-  padding: 2rem 2.5rem;
-  border-radius: 1.25rem;
-  border: 1px solid oklch(1 0 0 / 8%);
-  background: linear-gradient(180deg, oklch(1 0 0 / 6%), oklch(1 0 0 / 2%));
-  backdrop-filter: blur(20px);
-  box-shadow: 0 24px 60px -20px oklch(0 0 0 / 70%);
-  min-width: 16rem;
-}
-
-#phish-loader .phish-loader-logo {
-  width: 3rem;
-  height: 3rem;
-  margin: 0 auto 1rem;
-  border-radius: 0.75rem;
-  background: linear-gradient(135deg, oklch(0.72 0.16 252), oklch(0.7 0.17 195));
-  display: grid;
-  place-items: center;
-  box-shadow: 0 12px 32px -8px oklch(0.72 0.16 252 / 55%);
-}
-
-#phish-loader .phish-loader-logo svg {
-  display: block;
-  width: 1.35rem;
-  height: 1.35rem;
-}
-
-#phish-loader .phish-loader-title {
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: oklch(0.97 0.01 250);
-}
-
-#phish-loader .phish-loader-sub {
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
-  color: oklch(0.7 0.02 256);
-}
-
-#phish-loader .phish-loader-ring {
-  width: 1.75rem;
-  height: 1.75rem;
-  margin: 1.25rem auto 0;
-  border-radius: 999px;
-  border: 2px solid oklch(1 0 0 / 10%);
-  border-top-color: oklch(0.72 0.16 252);
-  animation: phish-spin 0.75s linear infinite;
-}
-
-@keyframes phish-spin {
-  to { transform: rotate(360deg); }
+  z-index: 2147483647;
 }
 
 .phish-sidebar-brand-row {

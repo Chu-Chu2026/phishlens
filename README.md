@@ -4,13 +4,14 @@
 
 A Master's dissertation research prototype combining an ensemble of Logistic Regression, Random Forest, and SVM with SHAP explainability in a local Streamlit dashboard.
 
-## Overview
 
-Loading Screen
-Dashboard
-URL Analysis
-Explainability
-SHAP
+## Overview
+![Loading Screen](/data/images/loading_screen.png)
+![Dashboard](/data/images/img1.png)
+![URL Analysis](/data/images/img2.png)
+![Explainability](/data/images/img3.png)
+![SHAP](/data/images/img4.png)
+
 
 ## Research Question
 
@@ -18,15 +19,11 @@ SHAP
 
 ## To view the deployed version of the project, please visit: [https://phishlens.streamlit.app/](https://phishlens.streamlit.app/)
 
-### Note: Incase you see This app has gone to sleep due to inactivity. Please click on the blue button to wake it up. ![WAKE UP](/data/images/img5.png) 
-
-
-
+### Note: Incase you see This app has gone to sleep due to inactivity. Please click on the blue button to wake it up. ![WAKE UP](/data/images/img5.png)
 
 ## Quick Start
 
-
-### One-shot Command to Setup virtual environment and run the project (Recommended)
+### One-shot (recommended)
 
 Creates `.venv`, installs dependencies, runs the ML pipeline, then launches Streamlit:
 
@@ -48,9 +45,7 @@ The script skips pip install and training when `.venv` packages and `trained_mod
 
 (`scripts/setup_and_run.ps1` / `.bat` are optional Windows wrappers around the same flow.)
 
-### Manual Project Setup and Execution
-
-
+### Manual steps
 
 #### 1. Install dependencies
 
@@ -59,8 +54,6 @@ python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 ```
-
-
 
 #### 2. Run the ML pipeline (download → train → evaluate → SHAP)
 
@@ -73,15 +66,26 @@ Google Colab workflow: `notebooks/phishlens_colab.ipynb`
 #### 3. Launch the dashboard
 
 ```bash
-streamlit run streamlit_app/app.py
+streamlit run streamlit_app.py
 ```
 
+### Streamlit Community Cloud
 
+1. Push this repo to GitHub.
+2. At [share.streamlit.io](https://share.streamlit.io), deploy the repo.
+3. Set **Main file path** to `streamlit_app.py` (not `scripts/setup_and_run.py`).
+4. Use **Python 3.12** if the UI asks for a version (`runtime.txt` requests 3.12).
+
+Cloud installs from `requirements.txt` automatically. Pre-trained models in `trained_models/` ship with the repo, so no training step is needed on Cloud.
+
+**Loading screen note:** Streamlit paints a native skeleton *before* any Python/CSS runs. Locally, `scripts/patch_streamlit_splash.py` (run by `setup_and_run`) injects PhishLens branding into Streamlit’s `index.html` so the first paint is branded. Community Cloud often blocks that write — there you may still see a brief Streamlit skeleton, then the PhishLens splash. To hide the skeleton only: append `?embed=true&embed_options=hide_loading_screen` to the Cloud URL (also strips some chrome).
 
 ## Project Structure
 
 ```
 phishlens/
+├── streamlit_app.py        # Streamlit Cloud / local entrypoint
+├── pages/                  # Multipage wrappers (Cloud discovers these next to entry)
 ├── streamlit_app/          # Streamlit dashboard (dissertation artefact)
 │   ├── app.py
 │   ├── pages/              # Dashboard, URL Analysis, Explainability, etc.
@@ -98,10 +102,9 @@ phishlens/
 ├── evaluation/             # Metrics, plots, SHAP artifacts
 ├── tests/
 ├── src/                    # React UI (design reference only)
+├── runtime.txt             # Python 3.12 for Streamlit Cloud
 └── scripts/run_pipeline.py
 ```
-
-
 
 ## Ensemble Model
 
@@ -110,8 +113,6 @@ Soft-voting `VotingClassifier` over:
 - Logistic Regression
 - Random Forest
 - Support Vector Machine (SVM)
-
-
 
 ## Explainability
 
@@ -122,15 +123,11 @@ SHAP `TreeExplainer` powers the charts, and every prediction also gets a **plain
 - Practical advice on what to do next
 - Global summary / importance plots plus per-URL waterfall and force-style charts
 
-
-
 ## Testing
 
 ```bash
 pytest tests/ -v
 ```
-
-
 
 ## React UI (Design Reference)
 
@@ -140,8 +137,6 @@ The `src/` directory contains the original Lovable-generated React/TanStack Star
 npm install
 npm run dev
 ```
-
-
 
 ## Academic Integrity
 
@@ -154,4 +149,3 @@ For dissertation writing support (paste-ready sections, results tables, limitati
 - `REPORT_WRITING_ARTIFACT.txt`
 - `REPORT_WRITING_ARTIFACT.md`
 - `REPORT_WRITING_ARTIFACT.pdf`
-

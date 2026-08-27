@@ -16,7 +16,7 @@ def _project_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
-@st.cache_resource(show_spinner="Loading ensemble model…")
+@st.cache_resource(show_spinner=False)
 def load_ensemble():
     """Load the trained voting ensemble classifier."""
     path = _project_root() / "trained_models" / "ensemble.joblib"
@@ -27,7 +27,7 @@ def load_ensemble():
     return joblib.load(path)
 
 
-@st.cache_resource(show_spinner="Loading model metadata…")
+@st.cache_resource(show_spinner=False)
 def load_metadata() -> dict[str, Any]:
     """Load model training metadata."""
     path = _project_root() / "trained_models" / "metadata.json"
@@ -36,7 +36,7 @@ def load_metadata() -> dict[str, Any]:
     return {}
 
 
-@st.cache_resource(show_spinner="Loading evaluation metrics…")
+@st.cache_resource(show_spinner=False)
 def load_metrics() -> dict[str, Any]:
     """Load offline evaluation metrics."""
     path = _project_root() / "evaluation" / "metrics.json"
@@ -45,7 +45,7 @@ def load_metrics() -> dict[str, Any]:
     return {}
 
 
-@st.cache_resource(show_spinner="Loading dataset statistics…")
+@st.cache_resource(show_spinner=False)
 def load_dataset_stats() -> dict[str, Any]:
     """Load dataset analytics statistics."""
     path = _project_root() / "evaluation" / "dataset_stats.json"
@@ -54,7 +54,7 @@ def load_dataset_stats() -> dict[str, Any]:
     return {}
 
 
-@st.cache_resource(show_spinner="Initialising SHAP explainer…")
+@st.cache_resource(show_spinner=False)
 def load_shap_explainer():
     """Load SHAP TreeExplainer backed by ensemble tree model."""
     import shap

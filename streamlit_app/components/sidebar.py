@@ -8,22 +8,33 @@ from pathlib import Path
 import streamlit as st
 
 from streamlit_app.components.ui import LOGO_SVG
+from streamlit_app.utils.nav import (
+    CONFIDENCE_EVIDENCE,
+    DASHBOARD,
+    DATASET_ANALYTICS,
+    EXPLAINABILITY,
+    HOME_PAGE,
+    MODEL_EVALUATION,
+    RESEARCH,
+    URL_ANALYSIS,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 
 NAV_ITEMS: list[tuple[str, str, str, str]] = [
-    ("dashboard", "Dashboard", "pages/1_Dashboard.py", "dashboard"),
-    ("detect", "URL Detection", "pages/2_URL_Analysis.py", "radar"),
-    ("explain", "Explainability", "pages/3_Explainability.py", "auto_awesome"),
-    ("performance", "Model Performance", "pages/4_Model_Evaluation.py", "monitoring"),
-    ("dataset", "Dataset Analytics", "pages/5_Dataset_Analytics.py", "database"),
-    ("research", "Research", "pages/6_Research.py", "menu_book"),
-    ("confidence", "Confidence Evidence", "pages/7_Confidence_Evidence.py", "psychology"),
+    ("dashboard", "Dashboard", DASHBOARD, "dashboard"),
+    ("detect", "URL Detection", URL_ANALYSIS, "radar"),
+    ("explain", "Explainability", EXPLAINABILITY, "auto_awesome"),
+    ("performance", "Model Performance", MODEL_EVALUATION, "monitoring"),
+    ("dataset", "Dataset Analytics", DATASET_ANALYTICS, "database"),
+    ("research", "Research", RESEARCH, "menu_book"),
+    ("confidence", "Confidence Evidence", CONFIDENCE_EVIDENCE, "psychology"),
 ]
 
 NAV_LABELS = {nav_id: label for nav_id, label, _, _ in NAV_ITEMS}
 
 _SCRIPT_TO_NAV: dict[str, str] = {
+    "streamlit_app.py": "home",
     "app.py": "home",
     "1_Dashboard.py": "dashboard",
     "2_URL_Analysis.py": "detect",
@@ -94,7 +105,7 @@ def _render_brand() -> None:
             unsafe_allow_html=True,
         )
     with b_text:
-        st.page_link("app.py", label="PhishLens", help="Back to landing page")
+        st.page_link(HOME_PAGE, label="PhishLens", help="Back to landing page")
         st.markdown('<span class="phish-sidebar-version">Research v1.0</span>', unsafe_allow_html=True)
 
 
