@@ -21,32 +21,21 @@ A Master's dissertation research prototype combining an ensemble of Logistic Reg
 
 ### Note: Incase you see This app has gone to sleep due to inactivity. Please click on the blue button to wake it up. ![WAKE UP](/data/images/img5.png)
 
+
 ## Quick Start
 
-### One-shot (recommended)
+### One-shot command to setup virtual environment and run the project (Recommended)
 
-Creates `.venv`, installs dependencies, runs the ML pipeline, then launches Streamlit:
+Copy and paste the command below into your terminal to installs dependencies, runs the ML pipeline, then launches Streamlit:
 
 ```bash
 python scripts/setup_and_run.py
 ```
 
-Options:
+## OR
 
-```bash
-python scripts/setup_and_run.py --skip-install      # don't touch pip
-python scripts/setup_and_run.py --skip-pipeline     # don't retrain
-python scripts/setup_and_run.py --force-install     # reinstall requirements
-python scripts/setup_and_run.py --force-pipeline    # retrain models
-python scripts/setup_and_run.py --run-tests
-```
 
-The script skips pip install and training when `.venv` packages and `trained_models/ensemble.joblib` already exist.
-
-(`scripts/setup_and_run.ps1` / `.bat` are optional Windows wrappers around the same flow.)
-
-### Manual steps
-
+### Manual Setup Guide (if you want to know the details of the setup)
 #### 1. Install dependencies
 
 ```bash
